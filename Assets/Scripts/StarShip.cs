@@ -33,7 +33,12 @@ public class StarShip : MonoBehaviour
 
     [Header("Containers")]
     public GameObject bulletsContainer;
-        
+
+    [Header("Audio")]
+    public AudioSource audioShot;
+    public AudioSource audioThrust;
+
+
 
     bool keyboardControl = true;
 
@@ -66,6 +71,9 @@ public class StarShip : MonoBehaviour
             {
                 speed = new Vector3(Mathf.Clamp(speed.x + acceleration * Time.deltaTime * transform.up.x, -maxSpeed, maxSpeed),
                                      Mathf.Clamp(speed.y + acceleration * Time.deltaTime * transform.up.y, -maxSpeed, maxSpeed), 0);
+
+                if (!audioThrust.isPlaying)
+                    audioThrust.Play();
             }
 
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
@@ -82,6 +90,9 @@ public class StarShip : MonoBehaviour
             {
                 speed = new Vector3(Mathf.Clamp(speed.x + acceleration * Time.deltaTime * transform.up.x, -maxSpeed, maxSpeed),
                                      Mathf.Clamp(speed.y + acceleration * Time.deltaTime * transform.up.y, -maxSpeed, maxSpeed), 0);
+
+                if (!audioThrust.isPlaying)
+                    audioThrust.Play();
             }
         }
 
@@ -137,6 +148,8 @@ public class StarShip : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, shotPoint.transform.position, transform.rotation, bulletsContainer.transform);
         bullet.GetComponent<Bullet>().BulletInitialize(bulletColor, bulletSpeed, mainCam.ScreenToWorldPoint(new Vector3(Screen.width,0,0)).x);
+
+        audioShot.Play();
     }
 
     void Damage()

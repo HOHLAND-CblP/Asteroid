@@ -53,9 +53,9 @@ public class SpawnControler : MonoBehaviour
         }
 
         //UFO
-        timeAfterUFOSpawn += Time.deltaTime;        
+        timeAfterUFOSpawn += Time.deltaTime;
 
-        if(timeAfterUFOSpawn >= nextUFOSpawnTime)
+        if (timeAfterUFOSpawn >= nextUFOSpawnTime && nextUFOSpawnTime != 0)
         {
             SpawnUFO();
 

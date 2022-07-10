@@ -26,6 +26,10 @@ public class GameControler : MonoBehaviour
     public GameObject pausePanel;
     public Button resumeButton;
 
+    [Header("Audio")]
+    public AudioClip[] audioClips;
+    AudioSource audioSource;
+
 
     bool isPause;
 
@@ -34,6 +38,7 @@ public class GameControler : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 0;
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -52,6 +57,17 @@ public class GameControler : MonoBehaviour
             }
         }
     }
+
+
+    public void PlaySound(int audioID)
+    {
+        
+        if (audioID > audioClips.Length - 1)
+            return;
+
+        audioSource.PlayOneShot(audioClips[audioID]);
+    }
+
 
     public void AsteroidDestroed(Asteroid.AsteroidSize size)
     {

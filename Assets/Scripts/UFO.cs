@@ -17,11 +17,14 @@ public class UFO : MonoBehaviour
     float timeToNextShot;
     float timeAfterShot;
 
+    
+
     //Containers
     GameObject bulletsContainer;
 
     //Cashe
     Camera mainCam;
+    GameControler gc;
     GameObject starShip;
 
 
@@ -29,7 +32,8 @@ public class UFO : MonoBehaviour
     {
         timeToNextShot = Random.Range(minTimeToShot, maxTimeToShot);
         mainCam = Camera.main;
-        starShip = mainCam.GetComponent<GameControler>().starShip;
+        gc = mainCam.GetComponent<GameControler>();
+        starShip = gc.starShip;
         bulletsContainer = mainCam.GetComponent<SpawnControler>().bulletsContainer;
     }
 
@@ -39,6 +43,7 @@ public class UFO : MonoBehaviour
         transform.Translate(Vector2.right * direction * speed * Time.deltaTime);
 
         timeAfterShot += Time.deltaTime;
+
 
         if (timeAfterShot >= timeToNextShot)
         {
