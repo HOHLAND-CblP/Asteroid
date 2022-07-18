@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Asteroid : MonoBehaviour
 {
+
+    public float flyawayAngle;
     AsteroidSize size;
     Vector2 direction;
     float speed;
+
     SpawnControler spCtrl;
+
 
     public enum AsteroidSize
     {
@@ -59,8 +63,8 @@ public class Asteroid : MonoBehaviour
         if (size != AsteroidSize.Small)
         {
             float angle = Mathf.Asin(direction.x / direction.magnitude) * Mathf.Rad2Deg;
-            Vector2 dir_1 = new Vector2(Mathf.Sin((angle + 45) * Mathf.Deg2Rad), Mathf.Sign(direction.y) * Mathf.Cos((angle + 45) * Mathf.Deg2Rad));
-            Vector2 dir_2 = new Vector2(Mathf.Sin((angle - 45) * Mathf.Deg2Rad), Mathf.Sign(direction.y) * Mathf.Cos((angle - 45) * Mathf.Deg2Rad));
+            Vector2 dir_1 = new Vector2(Mathf.Sin((angle + flyawayAngle) * Mathf.Deg2Rad), Mathf.Sign(direction.y) * Mathf.Cos((angle + flyawayAngle) * Mathf.Deg2Rad));
+            Vector2 dir_2 = new Vector2(Mathf.Sin((angle - flyawayAngle) * Mathf.Deg2Rad), Mathf.Sign(direction.y) * Mathf.Cos((angle - flyawayAngle) * Mathf.Deg2Rad));
 
             spCtrl.SpawnAsteroid(size - 1, dir_1, transform.position);
             spCtrl.SpawnAsteroid(size - 1, dir_2, transform.position);

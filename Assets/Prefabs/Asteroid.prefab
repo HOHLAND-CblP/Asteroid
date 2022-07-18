@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e421fffdb170325488682cfb470b0e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flyawayAngle: 10
 --- !u!60 &645077392946786012
 PolygonCollider2D:
   m_ObjectHideFlags: 0

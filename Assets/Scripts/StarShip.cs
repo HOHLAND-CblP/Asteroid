@@ -108,7 +108,7 @@ public class StarShip : MonoBehaviour
             }
         }
 
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) && !keyboardControl) && shot )
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) && !keyboardControl) && shot  && !gc.isPause)
         {
             Shot();
             shot = false;

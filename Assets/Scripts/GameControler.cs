@@ -31,7 +31,7 @@ public class GameControler : MonoBehaviour
     AudioSource audioSource;
 
 
-    bool isPause;
+    public bool isPause;
 
 
     void Start()
@@ -39,6 +39,8 @@ public class GameControler : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 0;
         audioSource = GetComponent<AudioSource>();
+
+        isPause = true;
     }
 
 
